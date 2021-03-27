@@ -1,4 +1,6 @@
 const assert = require('assert')
+const sum    = require('../src/sum')
+const omit   = require('../src/omit')
 const load   = require('../src/load')
 const books  = load()
 
@@ -18,18 +20,14 @@ describe('book chapter verse', function() {
                         let chapter = chapter_index + 1
                         let verse   = verse_index   + 1
                         
-                        assert.equal(word.chapter, chapter)
-                        assert.equal(word.verse,   verse)
+                        if (omit(word))
+                            return
 
-                        if (word.book == 'Luke' && word.chapter == 22 && (word.verse == 43 || word.verse == 44)) {
-                            assert.equal(word.book_chapter_verse[0], null)
-                            assert.equal(word.book_chapter_verse[1], null)
-                            assert.equal(word.book_chapter_verse[2], null)
-                        } else {
-                            assert.equal(word.book_chapter_verse[0], book)
-                            assert.equal(word.book_chapter_verse[1], chapter)
-                            assert.equal(word.book_chapter_verse[2], verse)
-                        }
+                        assert.equal(word.chapter, chapter)
+                        assert.equal(word.verse, verse)
+                        assert.equal(word.book_chapter_verse[0], book)
+                        assert.equal(word.book_chapter_verse[1], chapter)
+                        assert.equal(word.book_chapter_verse[2], verse)
                     })
                 })
             })
@@ -98,6 +96,42 @@ describe('greek characters', function() {
                                 assert(code <= 937)
                             })
                         })
+                    })
+                })
+            })
+        })
+    })
+})
+
+describe('greek', function() {
+    it('is not empty', function() {
+        books.forEach(function(book, index) {
+            book.chapters.forEach(function(chapter) {
+                chapter.verses.forEach(function(verse) {
+                    verse.words.forEach(function(word) {
+                        if (omit(word))
+                            return
+                        assert(word.greek != "")
+                    })
+                })
+            })
+        })
+    })
+})
+
+describe('word total value', function() {
+    it('is correct', function() {
+        books.forEach(function(book, index) {
+            book.chapters.forEach(function(chapter) {
+                chapter.verses.forEach(function(verse) {
+                    verse.words.forEach(function(word) {
+                        if (omit(word))
+                            return
+
+                        let actual   = word.word_total_value
+                        let expected = sum(word.greek)
+
+                        assert.equal(actual, expected, JSON.stringify(word))
                     })
                 })
             })
