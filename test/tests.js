@@ -345,7 +345,6 @@ describe('book letters', function() {
                         expected += word.letters
                     })
                 })
-
             })
 
             assert.equal(actual, expected)
@@ -369,7 +368,6 @@ describe('book words', function() {
                         expected++
                     })
                 })
-
             })
 
             assert.equal(actual, expected)
@@ -393,7 +391,6 @@ describe('book total value', function() {
                         expected += word.word_total_value
                     })
                 })
-
             })
 
             assert.equal(actual, expected)
