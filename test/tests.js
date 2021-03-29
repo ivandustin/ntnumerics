@@ -400,3 +400,26 @@ describe('book total value', function() {
         })
     })
 })
+
+describe('cumulative book letters', function() {
+    it('is correct', function() {
+        let actual   = 0
+        let expected = 0
+
+        books.forEach(function(book, index) {
+            book.chapters.forEach(function(chapter) {
+                chapter.verses.forEach(function(verse) {
+                    verse.words.forEach(function(word) {
+                        if (omit(word))
+                            return
+
+                        actual    = word.cumulative_book_letters
+                        expected += word.letters
+                    })
+                })
+            })
+        })
+
+        assert.equal(actual, expected)
+    })
+})
