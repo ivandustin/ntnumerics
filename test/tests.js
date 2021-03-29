@@ -262,3 +262,23 @@ describe('verse total value', function() {
         })
     })
 })
+
+describe('chapter letters', function() {
+    it('is correct', function() {
+        books.forEach(function(book, index) {
+            book.chapters.forEach(function(chapter) {
+                let actual   = 0
+                let expected = 0
+
+                chapter.verses.forEach(function(verse) {
+                    verse.words.forEach(function(word) {
+                        actual    = word.chapter_letters
+                        expected += word.letters
+                    })
+                })
+
+                assert.equal(actual, expected)
+            })
+        })
+    })
+})
