@@ -352,3 +352,27 @@ describe('book letters', function() {
         })
     })
 })
+
+describe('book words', function() {
+    it('is correct', function() {
+        books.forEach(function(book, index) {
+            let actual   = 0
+            let expected = 0
+
+            book.chapters.forEach(function(chapter) {
+                chapter.verses.forEach(function(verse) {
+                    verse.words.forEach(function(word) {
+                        if (omit(word))
+                            return
+
+                        actual = word.book_words
+                        expected++
+                    })
+                })
+
+            })
+
+            assert.equal(actual, expected)
+        })
+    })
+})
