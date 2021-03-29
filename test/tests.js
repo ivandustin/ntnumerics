@@ -177,3 +177,25 @@ describe('book word position', function() {
         })
     })
 })
+
+describe('nt word position', function() {
+    it('is correct', function() {
+        let expected = 0
+
+        books.forEach(function(book, index) {
+            book.chapters.forEach(function(chapter) {
+                chapter.verses.forEach(function(verse) {
+                    verse.words.forEach(function(word) {
+                        let actual = word.nt_word_position
+
+                        if (omit(word))
+                            return
+
+                        expected++
+                        assert.equal(actual, expected)
+                    })
+                })
+            })
+        })
+    })
+})
