@@ -248,16 +248,15 @@ describe('verse total value', function() {
         books.forEach(function(book, index) {
             book.chapters.forEach(function(chapter) {
                 chapter.verses.forEach(function(verse) {
-                    let last = verse.words[verse.words.length - 1]
-                    let word = last
+                    let actual   = 0
+                    let expected = 0
 
-                    if (omit(word))
-                        return
+                    verse.words.forEach(function(word) {
+                        actual    = word.verse_total_value
+                        expected += word.word_total_value
+                    })
 
-                    let actual   = last.verse_total_value
-                    let expected = verse.words.map((word)=> word.word_total_value).reduce((a, b)=> a + b)
-
-                    assert.equal(actual, expected, JSON.stringify(last))
+                    assert.equal(actual, expected)
                 })
             })
         })
