@@ -205,16 +205,15 @@ describe('verse letters', function() {
         books.forEach(function(book, index) {
             book.chapters.forEach(function(chapter) {
                 chapter.verses.forEach(function(verse) {
-                    let last = verse.words[verse.words.length - 1]
-                    let word = last
+                    let actual   = 0
+                    let expected = 0
 
-                    if (omit(word))
-                        return
+                    verse.words.forEach(function(word) {
+                        actual    = word.verse_letters
+                        expected += word.letters
+                    })
 
-                    let actual   = last.verse_letters
-                    let expected = verse.words.map((word)=> word.letters).reduce((a, b)=> a + b)
-
-                    assert.equal(actual, expected, JSON.stringify(last))
+                    assert.equal(actual, expected)
                 })
             })
         })
