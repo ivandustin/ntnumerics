@@ -241,3 +241,24 @@ describe('verse words', function() {
         })
     })
 })
+
+describe('verse total value', function() {
+    it('is correct', function() {
+        books.forEach(function(book, index) {
+            book.chapters.forEach(function(chapter) {
+                chapter.verses.forEach(function(verse) {
+                    let last = verse.words[verse.words.length - 1]
+                    let word = last
+
+                    if (omit(word))
+                        return
+
+                    let actual   = last.verse_total_value
+                    let expected = verse.words.map((word)=> word.word_total_value).reduce((a, b)=> a + b)
+
+                    assert.equal(actual, expected, JSON.stringify(last))
+                })
+            })
+        })
+    })
+})
