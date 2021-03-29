@@ -446,3 +446,26 @@ describe('cumulative book words', function() {
         assert.equal(actual, expected)
     })
 })
+
+describe('cumulative book total value', function() {
+    it('is correct', function() {
+        let actual   = 0
+        let expected = 0
+
+        books.forEach(function(book, index) {
+            book.chapters.forEach(function(chapter) {
+                chapter.verses.forEach(function(verse) {
+                    verse.words.forEach(function(word) {
+                        if (omit(word))
+                            return
+
+                        actual    = word.cumulative_book_total_value
+                        expected += word.word_total_value
+                    })
+                })
+            })
+        })
+
+        assert.equal(actual, expected)
+    })
+})
