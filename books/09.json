@@ -823,15 +823,20 @@
                             "cumulative_book_letters": 0,
                             "cumulative_book_words": 0,
                             "cumulative_book_total_value": 0
-                        },
+                        }
+                    ]
+                },
+                {
+                    "verse": 3,
+                    "words": [
                         {
                             "book": "Gal",
                             "chapter": 1,
-                            "verse": 2,
+                            "verse": 3,
                             "book_chapter_verse": [
                                 9,
                                 1,
-                                2
+                                3
                             ],
                             "nt_word_position": 101432,
                             "book_word_position": 30,
@@ -851,12 +856,7 @@
                             "cumulative_book_letters": 0,
                             "cumulative_book_words": 0,
                             "cumulative_book_total_value": 0
-                        }
-                    ]
-                },
-                {
-                    "verse": 3,
-                    "words": [
+                        },
                         {
                             "book": "Gal",
                             "chapter": 1,

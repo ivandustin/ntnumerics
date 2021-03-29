@@ -38236,15 +38236,20 @@
                             "cumulative_book_letters": 0,
                             "cumulative_book_words": 0,
                             "cumulative_book_total_value": 0
-                        },
+                        }
+                    ]
+                },
+                {
+                    "verse": 13,
+                    "words": [
                         {
                             "book": "1 Pet",
                             "chapter": 4,
-                            "verse": 12,
+                            "verse": 13,
                             "book_chapter_verse": [
                                 21,
                                 4,
-                                12
+                                13
                             ],
                             "nt_word_position": 123409,
                             "book_word_position": 1351,
@@ -38264,12 +38269,7 @@
                             "cumulative_book_letters": 0,
                             "cumulative_book_words": 0,
                             "cumulative_book_total_value": 0
-                        }
-                    ]
-                },
-                {
-                    "verse": 13,
-                    "words": [
+                        },
                         {
                             "book": "1 Pet",
                             "chapter": 4,
