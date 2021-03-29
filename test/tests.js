@@ -305,3 +305,26 @@ describe('chapter words', function() {
         })
     })
 })
+
+describe('chapter total value', function() {
+    it('is correct', function() {
+        books.forEach(function(book, index) {
+            book.chapters.forEach(function(chapter) {
+                let actual   = 0
+                let expected = 0
+
+                chapter.verses.forEach(function(verse) {
+                    verse.words.forEach(function(word) {
+                        if (omit(word))
+                            return
+
+                        actual    = word.chapter_total_value
+                        expected += word.word_total_value
+                    })
+                })
+
+                assert.equal(actual, expected)
+            })
+        })
+    })
+})
