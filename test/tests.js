@@ -155,3 +155,25 @@ describe('letters', function() {
         })
     })
 })
+
+describe('book word position', function() {
+    it('is correct', function() {
+        books.forEach(function(book, index) {
+            let expected = 0
+
+            book.chapters.forEach(function(chapter) {
+                chapter.verses.forEach(function(verse) {
+                    verse.words.forEach(function(word) {
+                        let actual = word.book_word_position
+
+                        if (omit(word))
+                            return
+
+                        expected++
+                        assert.equal(actual, expected)
+                    })
+                })
+            })
+        })
+    })
+})
