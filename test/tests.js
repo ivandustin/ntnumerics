@@ -220,3 +220,24 @@ describe('verse letters', function() {
         })
     })
 })
+
+describe('verse words', function() {
+    it('is correct', function() {
+        books.forEach(function(book, index) {
+            book.chapters.forEach(function(chapter) {
+                chapter.verses.forEach(function(verse) {
+                    let last = verse.words[verse.words.length - 1]
+                    let word = last
+
+                    if (omit(word))
+                        return
+
+                    let actual   = last.verse_words
+                    let expected = verse.words.length
+
+                    assert.equal(actual, expected, JSON.stringify(last))
+                })
+            })
+        })
+    })
+})
