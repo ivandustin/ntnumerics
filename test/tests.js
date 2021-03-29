@@ -466,3 +466,20 @@ describe('cumulative book total value', function() {
         assert.equal(actual, expected)
     })
 })
+
+describe('greek', function() {
+    it('is not empty', function() {
+        books.forEach(function(book, index) {
+            book.chapters.forEach(function(chapter) {
+                chapter.verses.forEach(function(verse) {
+                    verse.words.forEach(function(word) {
+                        if (omit(word))
+                            return
+
+                        assert(word.greek != "")
+                    })
+                })
+            })
+        })
+    })
+})
