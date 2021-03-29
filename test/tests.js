@@ -138,3 +138,20 @@ describe('word total value', function() {
         })
     })
 })
+
+describe('letters', function() {
+    it('is correct', function() {
+        books.forEach(function(book, index) {
+            book.chapters.forEach(function(chapter) {
+                chapter.verses.forEach(function(verse) {
+                    verse.words.forEach(function(word) {
+                        let actual   = word.letters
+                        let expected = word.greek.length
+
+                        assert.equal(actual, expected)
+                    })
+                })
+            })
+        })
+    })
+})
