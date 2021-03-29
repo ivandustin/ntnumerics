@@ -199,3 +199,24 @@ describe('nt word position', function() {
         })
     })
 })
+
+describe('verse letters', function() {
+    it('is correct', function() {
+        books.forEach(function(book, index) {
+            book.chapters.forEach(function(chapter) {
+                chapter.verses.forEach(function(verse) {
+                    let last = verse.words[verse.words.length - 1]
+                    let word = last
+
+                    if (omit(word))
+                        return
+
+                    let actual   = last.verse_letters
+                    let expected = verse.words.map((word)=> word.letters).reduce((a, b)=> a + b)
+
+                    assert.equal(actual, expected, JSON.stringify(last))
+                })
+            })
+        })
+    })
+})
